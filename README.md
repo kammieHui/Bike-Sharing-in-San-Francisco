@@ -8,7 +8,7 @@ Provide insights to improve service quality and hardware efficiency.
 ## 🗂️ Dataset  
 The dataset was a public data from bigquery, 3 datasets has been used in this project<br>
 - <b>Bikeshare_trips:- </b><br>
-  data size: 983K rows x 11 columns <br>
+  data size: 891K rows x 11 columns <br>
   Key Columns<br>
   <code> trip_id:</code> Numeric ID of bike trip <br>
   <code> duration_sec:</code> Time of trip in seconds<br>
@@ -44,15 +44,79 @@ The dataset was a public data from bigquery, 3 datasets has been used in this pr
 ## 🔧 Data Cleaning & Preparation  
 - Cleaned and formatted data in BigQuery
 - Removed null values, fixed data types, deduplicated rows
-- Created derived columns such as `Response Time`, `Satisfaction Score Bucket`, etc.
-
+  
 ## 🧠 Key SQL Queries (BigQuery)
+
 ```sql
--- Example: Average response time by agent
-SELECT agent_id, AVG(response_time_minutes) AS avg_response_time
-FROM customer_feedback
-GROUP BY agent_id
-ORDER BY avg_response_time;
+-- only Trips in San Francisco are relevant to this project
+SELECT * 
+FROM `bigquery-public-data.san_francisco.bikeshare_trips` AS trips
+JOIN `bigquery-public-data.san_francisco.bikeshare_stations` AS stations
+ON trips.start_station_id = stations.station_id
+WHERE stations.landmark = 'San Francisco'
+```
+- Find out the most popular route in San Francisco among subscriber and customer<br>
+```sql
+WITH SF_trips AS (
+  SELECT * 
+  FROM `bigquery-public-data.san_francisco.bikeshare_trips` as trips
+  JOIN `bigquery-public-data.san_francisco.bikeshare_stations` as stations
+  ON trips.start_station_id = stations.station_id
+  WHERE stations.landmark = 'San Francisco'
+
+)
+SELECT
+   start_station_name,
+   end_station_name,
+   COUNT(*) AS trip_count,
+   SUM(
+    CASE 
+      WHEN subscriber_type = 'Customer'  
+      THEN 1
+      ELSE 0
+    END) AS Customer_Count,
+    SUM(
+    CASE 
+      WHEN subscriber_type = 'Subscriber' 
+      THEN 1
+      ELSE 0
+    END) AS Subscriber_Count
+FROM SF_trips
+GROUP BY 
+  start_station_name,
+  end_station_name
+ORDERY BY
+  trip_count DESC
+```
+- Find out most popular riding duration<br>
+```sql
+WITH duration AS (
+  SELECT
+    ROUND((duration_sec/60), 0) AS mins,
+    subscriber_type
+  FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+  ORDER BY mins
+) 
+SELECT 
+  CASE 
+    WHEN duration.mins <= 5 THEN 'Short (<5 min)'
+    WHEN duration.mins BETWEEN 6 AND 20 THEN 'Medium (5-20 min)'
+    WHEN duration.mins BETWEEN 21 AND 60 THEN 'Long (20-60 min)'
+    ELSE 'Very Long (>60 min)'
+  END AS duration_category,
+  COUNT(*) as no_of_cat,
+  SUM(CASE 
+    WHEN subscriber_type = 'Customer' 
+      THEN 1
+      ELSE 0
+    END) AS total_customer,
+  SUM(CASE
+    WHEN subscriber_type = 'Subscriber'
+      THEN 1
+      ELSE 0
+    END) AS total_subscriber
+FROM duration
+GROUP BY duration_category
 ```
 
 ## 📈 Power BI Dashboard  
