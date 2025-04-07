@@ -47,15 +47,15 @@ The dataset was a public data from bigquery, 3 datasets has been used in this pr
   
 ## 🧠 Key SQL Queries (BigQuery)
 
+- <b>only Trips in San Francisco are relevant to this project</b>
 ```sql
--- only Trips in San Francisco are relevant to this project
 SELECT * 
 FROM `bigquery-public-data.san_francisco.bikeshare_trips` AS trips
 JOIN `bigquery-public-data.san_francisco.bikeshare_stations` AS stations
 ON trips.start_station_id = stations.station_id
 WHERE stations.landmark = 'San Francisco'
 ```
-- Find out the most popular route in San Francisco among subscriber and customer<br>
+- <b>Find out the most popular route in San Francisco among subscriber and customer</b><br>
 ```sql
 WITH SF_trips AS (
   SELECT * 
@@ -88,7 +88,7 @@ GROUP BY
 ORDERY BY
   trip_count DESC
 ```
-- Find out most popular riding duration<br>
+- <b>Find out most popular riding duration</b><br>
 ```sql
 WITH SF_trips AS (
   SELECT * 
@@ -118,15 +118,53 @@ GROUP BY
 ORDER BY no_of_cat DESC;
 ```
 
-## 📈 Power BI Dashboard  
-- Built interactive visuals: bar charts, slicers, and KPIs
-- Added filters for date range, agent name, and satisfaction score
-- Summary KPIs: Avg Response Time, % Satisfied Customers, Volume by Channel
+- <b>Find out houly bikes availability on each stations</b><br>
+```sql
+WITH average_hour_availability AS ( 
+  SELECT 
+    station_id, 
+    EXTRACT(HOUR FROM time) AS hour, 
+    EXTRACT(DAYOFWEEK FROM time) AS day_of_week, -- Extracts day of the week (1 = Sunday, 7 = Saturday)
+    ROUND(AVG(bikes_available),2) AS avg_bikes_available, 
+    ROUND(AVG(docks_available),2) AS avg_docks_available
+  FROM `bigquery-public-data.san_francisco.bikeshare_status` 
+  GROUP BY station_id, hour, day_of_week
+) 
+
+SELECT
+  a.station_id,
+  s.name, 
+  a.hour, 
+  a.day_of_week,  
+  a.avg_bikes_available, 
+  a.avg_docks_available, 
+  ROUND((a.avg_bikes_available - a.avg_docks_available), 2) AS difference_avail
+FROM average_hour_availability AS a
+JOIN `bigquery-public-data.san_francisco.bikeshare_stations` AS s
+ON a.station_id = s.station_id
+WHERE s.landmark = 'San Francisco'
+ORDER BY 
+  a.station_id,
+  s.name, 
+  a.day_of_week,  
+  a.hour, 
+  a.avg_bikes_available, 
+  a.avg_docks_available;
+```
+
+## 📈 Power BI Report  
+Report includes:-<br>
+- <b>Cards</b> - Overview of total rides, number of stations, and active bikes 
+- <b>Tables</b> - Popular Routes, top start stations and underused stations
+- <b>Stacked Bar Charts</b> - Ride duration preference, ride growth, bike usuage longevity
+- <b>Line Charts with Slicer</b> - Hourly bikes availability across different stations and days of the week
 
 ## 💡 Key Insights
-- Response time is highest during weekends.
-- Agent X consistently outperforms others in customer satisfaction.
-- Chat support has higher resolution rate than email.
+- Some of the Station are significantly under use
+- Most Popular Ride duration is around 5 - 20 mins
+- Users in Annaul / 30 day subscription are main users, which is 7 - 8 times more than 24 - 36 hours users
+- Half of the bikes are significantly under utilize than another half number of bikes. Further investigation may need to decide how to have a longer lifespan for share bikes
+- The availabily of bikes peak hour varies across different stations. Althogh this cannot come into a conclusion, it is worthwhile to observe the pattern use on each station for strategic planning 
 
 ## 📎 Files Included
 - `queries.sql`: SQL scripts used in BigQuery
