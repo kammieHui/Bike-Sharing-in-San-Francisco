@@ -172,6 +172,9 @@ Report includes:-<br>
 - `README.md`: This project summary
 
 ## 📚 Learnings
-- Practiced window functions and CTEs in BigQuery
-- Learned to connect BigQuery to Power BI
-- Improved dashboard storytelling using filters and KPIs
+- More hands-on practice with SQL using BigQuery, especially with JOINs, CTEs, and window functions
+- Learned how to clean and prepare data for analysis (e.g. fixing formats, removing duplicates, filtering relevant rows)
+- connected BigQuery to Power BI and worked through setting up the data model
+- Built a Power BI dashboard using cards, tables, bar and line charts, and slicers
+- Practiced visualizing data to highlight trends and make the report easier to understand
+- Learned how to document the project clearly in a structured GitHub README
