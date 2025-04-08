@@ -168,7 +168,7 @@ Report includes:-<br>
 
 ## 📎 Files Included
 - `queries.sql`: SQL scripts used in BigQuery
-- [`Report/PowerBI_SF_share bikes_v1.2pdf`](./Report/PowerBI_SF_share%20bikes%20v1.2pdf): Exported Power BI Report
+- [`Report/PowerBI_SF_share_bikes_v1.2pdf`](./Report/PowerBI_SF_share_bikes_v1.2.pdf): Exported Power BI Report
 - `README.md`: This project summary
 
 ## 📚 Learnings
