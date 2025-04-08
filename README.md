@@ -163,7 +163,7 @@ Report includes:-<br>
 - Some of the Station are significantly underused compared to others.
 - Most Popular Ride duration is around 5 - 20 mins.
 - Annual/30-day subscribers account for the majority of rides — 7 to 8 times more than 24–72 hour users.
-- Around half of the bikes are heavily underutilized compared to the other half. Further investigation may help optimize bike distribution and increase lifespan.
+- Around half of the bikes are heavily underutilized compared to the other half. Some individual bikes are heavily used. Further investigation may help optimize bike distribution and increase lifespan.
 - Peak bike availability hours vary across stations. While no clear pattern is concluded, observing station-level trends may support more strategic resource planning.
 
 ## 📎 Files Included
