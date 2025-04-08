@@ -8,9 +8,10 @@ WITH SF_trips AS (
 )
 SELECT
   bike_number,
-  COUNT(*) AS number_of_use
+  ROUND(SUM(duration_sec)/60,0 )AS total_mins_ride, -- base on riding mintes to see the depreciation of the bike
+  COUNT(*) AS number_of_trips -- number of trips as a second reference 
 FROM SF_trips
 GROUP BY bike_number
-ORDER BY number_of_use DESC 
+ORDER BY total_mins_ride DESC 
 
 -- to have a list of bike ID and number of use for further investigation
