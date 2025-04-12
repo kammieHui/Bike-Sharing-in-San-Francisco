@@ -1,4 +1,4 @@
-# Bike-Sharing-in-San-Francisco
+# 🚲 Bike-Sharing-in-San-Francisco
 SQL + Power BI Project to uncover the trends in usage,  of share bikes
 
 ## 📌 Objective  
@@ -8,26 +8,22 @@ Provide insights to improve service quality and hardware efficiency.
 ## 🗂️ Dataset  
 The dataset was a public data from bigquery, 3 datasets has been used in this project<br>
 - <b>Bikeshare_trips:- </b><br>
-  data size: 891K rows x 11 columns <br>
-  Key Columns<br>
-  <code> trip_id:</code> Numeric ID of bike trip <br>
-  <code> duration_sec:</code> Time of trip in seconds<br>
-  <code> start_date:</code> Start date of trip with data and time, in PST<br>
-  <code> start_station_name:</code> Station name of Start Station<br>
-  <code> end_date:</code> Numeric Reference of Start Station<br>
-  <code> end_station_name:</code> End date of trip with data and time, in PST<br>
-  <code> end_station_id:</code> Numeric Reference of End Station<br>
-  <code> bike_number:</code> ID of bike used<br>
-  <code> subscriber_type:</code> Subscriber = Annual Or 30 day member; Customer = 24-hour or 3-day member<br>
-  <br>
+  `891K rows x 11 columns` <br>
+  Key Columns:<br>
+  •	`trip_id`: Unique ID of bike trip
+	•	`duration_sec`: Trip duration in seconds
+	•	`start_date`, end_date: Start and end timestamp (PST)
+	•	`start_station_name`, `end_station_name`: Station names
+	•	`subscriber_type`: Subscriber = 30-day/Annual Member, Customer = 24/72-hour user
+ <br>
 - <b>Bikeshare_status:-</b> <br>
-  Record createdwhen a bike bing pick up or return.<br>
-  data size: 107501K rows x 4 columns<br>
-  Key Columns used<br>
-  <code>station_id:</code>Station ID number<br>
-  <code>bikes_available:</code>Number of available bikes<br>
-  <code>docks_available:</code>Number of available docks<br>
-  <code>time:</code>Date and time, PST<br>
+`107501K rows x 4 columns`<br>
+  Real-time data on bike and dock availability<br>
+  Key Columns:<br>
+  -`station_id`:Station ID number<br>
+  -`bikes_available`:Number of available bikes<br>
+  -`docks_available`:Number of available docks<br>
+  -`time`:Date and time, PST<br>
   <br>  
 - <b>Bikeshare_stations:- </b><br>
   Record bike stations installation date, locations, and bikes and dock installed<br>
