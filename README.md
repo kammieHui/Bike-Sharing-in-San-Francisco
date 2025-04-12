@@ -1,23 +1,38 @@
-# 🚲 Bike-Sharing-in-San-Francisco
-SQL + Power BI Project to uncover the trends in usage,  of share bikes
+# 🚲 Bike-Sharing in San Francisco<br>
+## SQL + Power BI Project to uncover trends in shared bike usage
+---
+## 📌 Objective
 
-## 📌 Objective  
-Analyze San Francisco Bike Sharing public data to uncover trends in subscription, popular routes, ride duration.  
-Provide insights to improve service quality and hardware efficiency.
+Analyze San Francisco public bike-sharing data to uncover trends in user types, popular routes, and ride durations.
+Provide insights to improve service quality, resource planning, and hardware utilization.
 
+---
+## 🗂️ Dataset
+Public data from Google BigQuery using 3 datasets:
+### bikeshare_trips
+`891K` rows × `11` columns<br>
+Details of each bike trip
+<b>Key columns:</b> <br>
+-`trip_id`: Unique ID of bike trip<br>
+-`duration_sec`: Trip duration in seconds<br>
+-`start_date`, `end_date`: Start and end timestamp (PST)<br>
+-`start_station_name`, `end_station_name`: Station names<br>
+-`subscriber_type`: Subscriber = 30-day/Annual Member, Customer = 24/72-hour user<br>
+
+ 
 ## 🗂️ Dataset  
 The dataset was a public data from bigquery, 3 datasets has been used in this project<br>
 - <b>Bikeshare_trips:- </b><br>
-  `891K rows x 11 columns` <br>
-  Key Columns:<br>
-  •	`trip_id`: Unique ID of bike trip
-	•	`duration_sec`: Trip duration in seconds
-	•	`start_date`, end_date: Start and end timestamp (PST)
-	•	`start_station_name`, `end_station_name`: Station names
-	•	`subscriber_type`: Subscriber = 30-day/Annual Member, Customer = 24/72-hour user
+`891K rows x 11 columns` <br>
+<b>Key Columns:<b><br>
+  -`trip_id`: Unique ID of bike trip<br>
+  -`duration_sec`: Trip duration in seconds<br>
+  -`start_date`, end_date: Start and end timestamp (PST)<br>
+  -`start_station_name`, `end_station_name`: Station names<br>
+  -`subscriber_type`: Subscriber = 30-day/Annual Member, Customer = 24/72-hour user
  <br>
 - <b>Bikeshare_status:-</b> <br>
-`107501K rows x 4 columns`<br>
+  `107M rows x 4 columns`<br>
   Real-time data on bike and dock availability<br>
   Key Columns:<br>
   -`station_id`:Station ID number<br>
