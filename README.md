@@ -162,11 +162,11 @@ Report includes:-<br>
 - <b>Line Charts with Slicer</b> - Hourly bikes availability across different stations and days of the week
 
 ## 💡 Key Insights
-- Some of the Station are significantly underused compared to others.
-- Most Popular Ride duration is around 5 - 20 mins.
-- Annual/30-day subscribers account for the majority of rides — 7 to 8 times more than 24–72 hour users.
-- Around half of the bikes are heavily underutilized compared to the other half. Some individual bikes are heavily used. Further investigation may help optimize bike distribution and increase lifespan.
-- Peak bike availability hours vary across stations. While no clear pattern is concluded, observing station-level trends may support more strategic resource planning.
+- 🚲 Some stations are heavily underused, indicating a potential for reallocation
+-	⏱️ Most popular ride duration is 5–20 minutes
+- 👥 Subscribers (30-day/annual) account for 7–8x more rides than short-term customers
+- 🔧 Roughly half of the bikes are underutilized, while others are overused
+-	⏰ Peak availability hours vary across stations — individualized planning could optimize distribution
 
 ## 📎 Files Included
 - `queries.sql`: SQL scripts used in BigQuery
@@ -174,9 +174,8 @@ Report includes:-<br>
 - `README.md`: This project summary
 
 ## 📚 Learnings
-- More hands-on practice with SQL using BigQuery, especially with JOINs, CTEs, and window functions
-- Learned how to clean and prepare data for analysis (e.g. fixing formats, removing duplicates, filtering relevant rows)
-- connected BigQuery to Power BI and worked through setting up the data model
-- Built a Power BI dashboard using cards, tables, bar and line charts, and slicers
-- Practiced visualizing data to highlight trends and make the report easier to understand
-- Learned how to document the project clearly in a structured GitHub README
+•	Practiced advanced SQL in BigQuery: CTEs, joins, aggregation <br>
+•	Cleaned and filtered raw data for focused analysis<br>
+•	Connected BigQuery to Power BI and built a working data model<br>
+•	Designed an interactive dashboard with cards, tables, charts, slicers<br>
+•	Improved my skills in data storytelling and documentation<br>
