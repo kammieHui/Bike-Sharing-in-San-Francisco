@@ -174,8 +174,8 @@ Report includes:-<br>
 - `README.md`: This project summary
 
 ## 📚 Learnings
-•	Practiced advanced SQL in BigQuery: CTEs, joins, aggregation <br>
-•	Cleaned and filtered raw data for focused analysis<br>
-•	Connected BigQuery to Power BI and built a working data model<br>
-•	Designed an interactive dashboard with cards, tables, charts, slicers<br>
-•	Improved my skills in data storytelling and documentation<br>
+-	Practiced advanced SQL in BigQuery: CTEs, joins, aggregation <br>
+-	Cleaned and filtered raw data for focused analysis<br>
+-	Connected BigQuery to Power BI and built a working data model<br>
+-	Designed an interactive dashboard with cards, tables, charts, slicers<br>
+- Improved my skills in data storytelling and documentation<br>
